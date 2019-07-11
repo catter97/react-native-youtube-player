@@ -11,6 +11,7 @@ export default class YTWebView extends Component<YTWebViewProps> {
   _playVideo = this.invoke.bind("playVideo");
   _pauseVideo = this.invoke.bind("pauseVideo");
   _seekTo = this.invoke.bind("seekTo");
+  _getcurrentTime = this.invoke.bind("getCurrentTime");
 
   invokeFunctions = () => {
     // invoke fuctions
