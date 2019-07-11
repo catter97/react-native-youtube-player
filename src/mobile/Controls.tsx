@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   StyleSheet,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
   Text,
   ActivityIndicator
 } from "react-native";
@@ -52,11 +52,13 @@ export default ({
     if (play && ready) {
       ref.current = setTimeout(() => {
         setVisible(false);
+        console.log('timeout visible');
       }, TIME_TO_HIDE_CONTROLS);
     }
   };
   const hideAfterExecute = (action: Function) => {
     hideControls();
+    console.log('hide After Execute');
     return action;
   };
   useEffect(() => {
@@ -73,15 +75,15 @@ export default ({
       style={[styles.container, { paddingHorizontal: fullScreen ? 40 : 0 }]}
       pointerEvents="auto"
     >
-      <TouchableOpacity
+      <TouchableWithoutFeedback
         onPress={() => hideAfterExecute(setVisible)(true)}
         style={styles.upperView}
       >
         <View style={styles.upperView} />
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
 
       {visible && (
-        <TouchableOpacity onPress={() => hideAfterExecute(() => {})()}>
+        <TouchableWithoutFeedback onPress={() => hideAfterExecute(() => {})()}>
           <View
             style={[
               styles.controls,
@@ -112,7 +114,7 @@ export default ({
               </View>
             </View>
           </View>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
       )}
       <ProgressBar
         value={progress}
