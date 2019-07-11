@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   StyleSheet,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   Text,
   ActivityIndicator
 } from "react-native";
@@ -73,15 +73,15 @@ export default ({
       style={[styles.container, { paddingHorizontal: fullScreen ? 40 : 0 }]}
       pointerEvents="auto"
     >
-      <TouchableWithoutFeedback
+      <TouchableOpacity
         onPress={() => hideAfterExecute(setVisible)(true)}
         style={styles.upperView}
       >
         <View style={styles.upperView} />
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
 
       {visible && (
-        <TouchableWithoutFeedback onPress={() => hideAfterExecute(() => {})()}>
+        <TouchableOpacity onPress={() => hideAfterExecute(() => {})()}>
           <View
             style={[
               styles.controls,
@@ -112,7 +112,7 @@ export default ({
               </View>
             </View>
           </View>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
       )}
       <ProgressBar
         value={progress}
